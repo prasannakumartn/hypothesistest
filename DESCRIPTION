@@ -1,0 +1,11 @@
+Package: hypothesistest
+Type: Package
+Title: Provides the t-test and chi square's p value and statistic for binary targets and provides it in a dataframe for a set of columns or for a whole dataframe.In case of ANOVA provides all possible tests's summary
+Version: 0.1.0
+Author: Manikandan
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: 1.Provides the t-test and chi square's p value and statistic and provides it in a dataframe for a set of columns or for a whole dataframe. 2.In case of ANOVA() provides p values in form of a dataframe. Assumption: No individual columns are provided for function Hyp_test().In such case a normal one on one t-test or chi would be better.
+License: NA
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
