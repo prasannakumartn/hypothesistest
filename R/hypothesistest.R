@@ -193,6 +193,7 @@ ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,
 
 
 ANOVA_test<-function(data,filename=NULL){
+  library(xlsx)
   target1=c()                             #segregating anova targets
   for (i in 1:ncol(data))
   {
