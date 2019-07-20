@@ -197,11 +197,11 @@ ANOVA_test<-function(data,filename=NULL){
   target1=c()                             #segregating anova targets
   for (i in 1:ncol(data))
   {
-    if((length(unique(data[,i]))>2) & (length(unique(data[,i]))<15))
+    if(((length(unique(data[,i]))>2) & (length(unique(data[,i]))<15)) | (is.factor(data[,i])==T)))
     {
       target1[i]<-i
     }
-    if(length(unique(data[,i]))>15 & length(unique(data[,i]))<20 | length(unique(data[,i]))==2){
+    if((length(unique(data[,i]))>15 & length(unique(data[,i]))<20) | (length(unique(data[,i]))==2)){
       print("---------------------------------------------------------------------")
       print(paste("ANOVA not possible for ",names(data)[i],"as a target since it is a categorical variable with insufficient levels for anova"))
     }
@@ -210,7 +210,7 @@ ANOVA_test<-function(data,filename=NULL){
   target1=as.data.frame(data[,target1])
   numeric=c()                              #segregating Numerical variable for ANOVA
   for (i in 1:ncol(data)){
-    if (length(unique(data[,i]))>20){
+    if ((length(unique(data[,i])))>20 | (is.numeric(data[,i]))==T){
       numeric[i]<-i
     }
     if(length(unique(data[,i]))<20){
