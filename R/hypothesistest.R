@@ -197,7 +197,7 @@ ANOVA_test<-function(data,filename=NULL){
   target1=c()                             #segregating anova targets
   for (i in 1:ncol(data))
   {
-    if(((length(unique(data[,i]))>2) & (length(unique(data[,i]))<15)) | (is.factor(data[,i])==T)))
+    if(((length(unique(data[,i]))>2) & (length(unique(data[,i]))<15)) | (is.factor(data[,i])==T))
     {
       target1[i]<-i
     }
