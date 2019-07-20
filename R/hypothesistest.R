@@ -19,22 +19,18 @@ ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,
   chi=c("chi","Chi","Chi Square")
 
   if ((is.null(User_BinaryTarget)) & is.null(User_Variable)){
-    target=c()                               #segregating binary targets
+   target=c()
     flag=0
-    for (i in 1:ncol(data))
+    for (i in 1:ncol(fram))
     {
-      #print(i)
-      if((length(unique(data[,i]))==2))
+      if((length(unique(fram[,i]))==2))
       {
-        flag=1
         target[i]<-i
-      }
-      else{
-        flag=0
+        flag=1
       }
     }
     if(flag==0){
-      print("No binary target")
+      stop("No binary target found")
     }
     target=target[!is.na(target)]
     target=as.data.frame(data[,target])
