@@ -78,7 +78,7 @@ ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,
           chisq[j]<-chisq.test(Categorical[,j],target[,i])$p.value
           stat[j]<-chisq.test(Categorical[,j],target[,i])$statistic
         }
-        a=data.frame(Dep_variable=c(names_1),Ind_Variable=c(names_2),Pvalue=c(chisq),Statistic=c(stat))
+        a=data.frame(Indep_variable=c(names_1),Dep_Variable=c(names_2),Pvalue=c(chisq),Statistic=c(stat))
         if(is.null(filename)){
           write.xlsx(a,file="chi.xlsx",sheetName = names(target)[i],append=TRUE)
         }
@@ -101,7 +101,7 @@ ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,
           T_test[j]<-t.test(as.numeric(Numerical[,j])~target[,i],alternative=c("two.sided", "less", "greater"))$p.value
           stat[j]<-t.test(as.numeric(Numerical[,j])~target[,i],alternative=c("two.sided", "less", "greater"))$statistic
         }
-        v=data.frame(Dep_Variable=c(names_11),Ind_Variable=c(names_22),P_value=c(T_test),Statistic=c(stat))
+        v=data.frame(Indep_Variable=c(names_11),Dep_Variable=c(names_22),P_value=c(T_test),Statistic=c(stat))
         if(is.null(filename)){
           write.xlsx(v,file="ttest.xlsx",sheetName = names(target)[i],append=TRUE)
         }
@@ -232,7 +232,7 @@ ANOVA_test<-function(data,filename=NULL){
       ANOVA_1[j]<-unlist(summary(aov_1))['Pr(>F)1']
     }
     #print(ANOVA_1)
-    a=data.frame(Dep_Variable=c(names_11),Ind_Variable=c(names_22),P_value=c(ANOVA_1))
+    a=data.frame(Indep_Variable=c(names_11),Dep_Variable=c(names_22),P_value=c(ANOVA_1))
     if(is.null(filename)){
       write.xlsx(a,file="ANOVA.xlsx",sheetName = names(target1)[i],append=TRUE)
     }
