@@ -9,29 +9,29 @@
 
 
 
-ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,filename=NULL){
-  library(xlsx)
-  if(is.data.frame(data)==FALSE){
-    stop("Please specify a dataframe object for the field data")
-  }
+    ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,filename=NULL){
+    library(xlsx)
+    if(is.data.frame(data)==FALSE){
+      stop("Please specify a dataframe object for the field data")
+    }
 
-  ttest=c("ttest","Ttest","T-test")
-  chi=c("chi","Chi","Chi Square")
+    ttest=c("ttest","Ttest","T-test")
+    chi=c("chi","Chi","Chi Square")
 
-  if ((is.null(User_BinaryTarget)) & is.null(User_Variable)){
-   target=c()
+    if ((is.null(User_BinaryTarget)) & is.null(User_Variable)){
+    target=c()
     flag=0
-    for (i in 1:ncol(fram))
-    {
-      if((length(unique(fram[,i]))==2))
-      {
-        target[i]<-i
-        flag=1
-      }
-    }
+    for (i in 1:ncol(data))
+     {
+      if((length(unique(data[,i]))==2))
+       {
+         target[i]<-i
+         flag=1
+       }
+     }
     if(flag==0){
-      stop("No binary target found")
-    }
+        stop("No binary target found")
+     }
     target=target[!is.na(target)]
     target=as.data.frame(data[,target])
     data1=c()                                #segregating non binary
