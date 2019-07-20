@@ -34,7 +34,7 @@ ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,
       }
     }
     if(flag==0){
-      stop("No binary target")
+      print("No binary target")
     }
     target=target[!is.na(target)]
     target=as.data.frame(data[,target])
