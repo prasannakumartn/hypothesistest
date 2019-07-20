@@ -58,7 +58,7 @@ ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,
     Numerical=as.data.frame(Non_binary[,numeric])
     cat=c()                                 #segregating categorical for Chi square test
     for (i in 1:ncol(Non_binary)){
-      if ((length(unique(Non_binary[,i]))<20 & length(unique(Non_binary[,i]))>2) | is.factor(Non_binary[,i])==T){
+      if ((length(unique(Non_binary[,i]))<=20 & length(unique(Non_binary[,i]))>2) | is.factor(Non_binary[,i])==T){
         cat[i]<-i
       }
     }
@@ -139,7 +139,7 @@ ttest_chi<-function(data,type_of_test,User_BinaryTarget=NULL,User_Variable=NULL,
       {
         Num[var]<-var
       }
-      if((length(unique(data[,var]))<20 & length(unique(data[,var]))>2) | (is.factor(data[,var])==T))
+      if((length(unique(data[,var]))<=20 & length(unique(data[,var]))>2) | (is.factor(data[,var])==T))
       {
         Cat[var]<-var
       }
@@ -201,7 +201,7 @@ ANOVA_test<-function(data,filename=NULL){
     {
       target1[i]<-i
     }
-    if((length(unique(data[,i]))>15 & length(unique(data[,i]))<20) | (length(unique(data[,i]))==2)){
+    if((length(unique(data[,i]))>15 & length(unique(data[,i]))<=20) | (length(unique(data[,i]))==2)){
       print("---------------------------------------------------------------------")
       print(paste("ANOVA not possible for ",names(data)[i],"as a target since it is a categorical variable with insufficient levels for anova"))
     }
@@ -213,7 +213,7 @@ ANOVA_test<-function(data,filename=NULL){
     if ((length(unique(data[,i])))>20 | (is.numeric(data[,i]))==T){
       numeric[i]<-i
     }
-    if(length(unique(data[,i]))<20){
+    if(length(unique(data[,i]))<=20){
       print("---------------------------------------------------------------------")
       print(paste(names(data)[i]," is not a numerical variable for testing ANOVA"))
     }
